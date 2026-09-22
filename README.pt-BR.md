@@ -2,13 +2,16 @@
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/)
 [![DuckDB](https://img.shields.io/badge/duckdb-1.0+-yellow.svg)](https://duckdb.org/)
-[![Streamlit](https://img.shields.io/badge/streamlit-1.39+-red.svg)](https://streamlit.io/)
+[![Streamlit](https://img.shields.io/badge/streamlit-1.39+-red.svg)](https://vie-video-intelligence-demo.streamlit.app/)
+[![Status](https://img.shields.io/badge/Mode-100%25%20Offline%20%2F%20Zero--API-success.svg)]()
 
 [English](README.md) | Português
 
 > Demonstração interativa do **Video Intelligence Engine (VIE)**: pipeline analítico multimodal que converte vídeos curtos em Creative Intelligence estruturada e consultável via SQL.
 
 Este repositório fornece uma demonstração **100% autônoma e offline** da camada analítica, do schema dimensional e do dashboard interativo do VIE utilizando **DuckDB** e **Streamlit**.
+
+🔗 **[Acessar Demo Online](https://vie-video-intelligence-demo.streamlit.app/)** | 📦 **[Código do Motor Principal](https://github.com/TStryder/vie-video-intelligence-engine)**
 
 ---
 
