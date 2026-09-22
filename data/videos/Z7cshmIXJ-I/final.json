@@ -1,0 +1,192 @@
+{
+  "schema_version": "3.0",
+  "video_id": "Z7cshmIXJ-I",
+  "source_url": "https://www.youtube.com/shorts/Z7cshmIXJ-I",
+  "metadata": {
+    "video_id": "Z7cshmIXJ-I",
+    "source_url": "https://www.youtube.com/shorts/Z7cshmIXJ-I",
+    "platform": "youtube",
+    "duration_seconds": 177.195,
+    "fps": 30.0,
+    "width": 360,
+    "height": 640,
+    "aspect_ratio": 0.562,
+    "codec_video": "h264",
+    "codec_audio": "aac",
+    "bitrate_kbps": 594,
+    "file_size_bytes": 13165753
+  },
+  "measurements": {
+    "editing": {
+      "shot_count": 42,
+      "cut_count": 41,
+      "cuts_per_second": 0.231,
+      "avg_shot_duration": 4.217,
+      "median_shot_duration": 3.767,
+      "shortest_shot_duration": 1.133,
+      "longest_shot_duration": 13.333,
+      "cuts_in_first_3s": 0
+    },
+    "speech": {
+      "speech_duration_seconds": 177.12,
+      "speech_ratio": 0.9996,
+      "word_count": 410,
+      "words_per_minute": 138.9
+    }
+  },
+  "observations": {
+    "visual": {
+      "has_webcam": false,
+      "has_center_caption": true,
+      "split_screen": true,
+      "face_visible": true,
+      "product_visible": false,
+      "environment_type": "studio"
+    },
+    "audio": {
+      "spoken_language": "pt",
+      "speech_present": true,
+      "music_present": null,
+      "sound_effects_present": null
+    },
+    "content": {
+      "category": "education_business",
+      "format": "talking_head_commentary"
+    }
+  },
+  "interpretations": {
+    "hook": {
+      "mechanisms": [
+        {
+          "type": "curiosity_gap",
+          "confidence": 0.95,
+          "evidence": [
+            {
+              "type": "transcript",
+              "timestamp_seconds": 0.0,
+              "text": "Entre 1885 e 1892, escavações no Vale do Quigistão recolheram 467 lápides.",
+              "frame_id": null,
+              "observation": "Speaker introduces a historical puzzle involving excavation findings without initially revealing their full significance.",
+              "frame_timestamp_seconds": null,
+              "frame_delta_seconds": null
+            }
+          ]
+        }
+      ],
+      "subject": "story",
+      "opening_action": "direct_speech"
+    },
+    "narrative": {
+      "structure": "setup_escalation_payoff",
+      "information_flow": [
+        "immediate_hook",
+        "progressive_reveal",
+        "step_by_step"
+      ],
+      "evidence": [
+        {
+          "type": "transcript",
+          "timestamp_seconds": 0.0,
+          "text": "Entre 1885 e 1892, escavações no Vale do Quigistão recolheram 467 lápides.",
+          "frame_id": null,
+          "observation": "Setup of the historical mystery.",
+          "frame_timestamp_seconds": null,
+          "frame_delta_seconds": null
+        },
+        {
+          "type": "transcript",
+          "timestamp_seconds": 50.52,
+          "text": "Dois genomas foram reconstruídos e eles eram ancestral direto de tudo que veio depois.",
+          "frame_id": null,
+          "observation": "Escalation into scientific analysis and connection to the pandemic.",
+          "frame_timestamp_seconds": null,
+          "frame_delta_seconds": null
+        },
+        {
+          "type": "transcript",
+          "timestamp_seconds": 171.08,
+          "text": "Meu nome é Ozzy e eu mostro a beleza escondida nos dados todos os dias.",
+          "frame_id": null,
+          "observation": "Payoff and creator introduction.",
+          "frame_timestamp_seconds": null,
+          "frame_delta_seconds": null
+        }
+      ]
+    },
+    "rhetorical_mechanisms": [
+      {
+        "mechanism": "curiosity",
+        "confidence": 0.9,
+        "evidence": [
+          {
+            "type": "transcript",
+            "timestamp_seconds": 8.06,
+            "text": "Ninguém contou as datas gravadas nelas.",
+            "frame_id": null,
+            "observation": "Poses an intriguing missing piece in historical data.",
+            "frame_timestamp_seconds": null,
+            "frame_delta_seconds": null
+          }
+        ]
+      },
+      {
+        "mechanism": "tension",
+        "confidence": 0.85,
+        "evidence": [
+          {
+            "type": "transcript",
+            "timestamp_seconds": 27.36,
+            "text": "Ali, a curva disparava.",
+            "frame_id": null,
+            "observation": "Builds tension regarding the sharp spike in deaths.",
+            "frame_timestamp_seconds": null,
+            "frame_delta_seconds": null
+          }
+        ]
+      }
+    ],
+    "cta": {
+      "present": true,
+      "types": [
+        "follow"
+      ],
+      "explicit_or_implicit": "explicit",
+      "position": "end",
+      "text": "Segue pra não perder a próxima história.",
+      "evidence": [
+        {
+          "type": "transcript",
+          "timestamp_seconds": 175.48,
+          "text": "Segue pra não perder a próxima história.",
+          "frame_id": null,
+          "observation": "Speaker directly instructs viewers to follow at the end of the video.",
+          "frame_timestamp_seconds": null,
+          "frame_delta_seconds": null
+        }
+      ]
+    }
+  },
+  "provenance": {
+    "schema_version": "3.0",
+    "pipeline_version": "3.0.0",
+    "model_name": "gemini-3.5-flash-lite",
+    "prompt_version": "semantic_analysis_v3",
+    "analysis_timestamp": "2026-09-20T05:11:10.769573+00:00"
+  },
+  "author": "The Beauty of Data",
+  "caption": "Entre 1885 e 1892, escavações num vale do Quirguistão recolheram 467 lápides.\nElas foram guardadas e ninguém contou as datas gravadas nelas.\n\nMais de cem anos depois, o historiador Philip Slavin, da Universidade de\nStirling, contou. Os enterros se distribuíam de forma regular ao longo de\nquase um século — menos em 1338 e 1339, quando a curva disparava. Pelo menos\n118 mortes em 24 meses, e dez lápides com a mesma palavra em siríaco:\npestilência.\n\nEm 2022, uma equipe do Instituto Max Planck extraiu DNA dos dentes de sete\npessoas enterradas no cemitério de Kara-Djigach. Três carregavam Yersinia\npestis. Dois genomas reconstruídos eram o ancestral direto de tudo o que\nveio depois — hoje respondem por 64% das cepas vivas da bactéria.\n\nOito anos após aqueles enterros, a peste chegou ao Mar Negro. Em 1347,\ndesembarcou na Itália. Entre 1346 e 1353, levou até 60% da população da\nEurásia ocidental.\n\nA Europa medieval não tinha epidemiologia. Tinha livro de registro paroquial.\nEm Givry, na Borgonha, o frade anotava de 28 a 29 enterros por ano. Em 1348,\nanotou 649. Metade em setembro. Ninguém entendia a bactéria, mas dava pra ver\num número que não fechava com o do ano anterior — e isso bastou para que, em\n27 de julho de 1377, o Conselho de Ragusa aprovasse os 30 dias de espera numa\nilha. Trinta dias era \"trentino\". O prazo subiu para quarenta: quarantina.\n\nO dado estava lá o tempo inteiro. Faltava alguém contar.\n\nEu sou o Ozzy e mostro a beleza escondida nos dados todos os dias.\nSe essa história te pegou, se inscreve — tem uma nova toda semana.\n\nFontes:\nThe source of the Black Death in fourteenth-century central Eurasia (Nature, 2022)\nhttps://www.nature.com/articles/s41586-022-04800-3\n\nOrigins of the Black Death identified (Max-Planck-Gesellschaft)\nhttps://www.mpg.de/18778852/0607-evan-origins-of-the-black-death-identified-150495-x\n\n800-year-old graves pinpoint where the Black Death began (Science / AAAS)\nhttps://www.science.org/content/article/800-year-old-graves-pinpoint-where-black-death-began\n\nQ&A: How the Black Death's origins were cracked (Gavi / VaccinesWork)\nhttps://www.gavi.org/vaccineswork/qa-how-black-deaths-origins-were-cracked\n\nBlack Death pandemic originated in Kyrgyzstan, ancient DNA from plague victims' teeth suggests (ABC News)\nhttps://www.abc.net.au/news/science/2022-06-16/black-death-pandemic-plague-ancient-dna-kyrgyzstan-origin/101151612\n\nConsequências da Peste Negra (Wikipédia)\nhttps://pt.wikipedia.org/wiki/Consequ%C3%AAncias_da_Peste_Negra\n\nPeste Negra (Wikipédia)\nhttps://pt.wikipedia.org/wiki/Peste_Negra\n\nSocial Distancing and Quarantine Were Used in Medieval Times to Fight the Black Death (HISTORY)\nhttps://www.history.com/articles/quarantine-black-death-medieval\n\nEtymologia: Quarantine (Emerging Infectious Diseases / CDC)\nhttps://pmc.ncbi.nlm.nih.gov/articles/PMC3559069\n\nQuarentena (Wikipédia)\nhttps://pt.wikipedia.org/wiki/Quarentena\n\nVocê conhece a história da 'quarentena'? (O São Paulo)\nhttps://osaopaulo.org.br/mundo/voce-conhece-a-historia-da-quarentena/\n\nInício do Século XX: o Butantan e o combate à epidemia de peste bubônica (Instituto Butantan)\nhttps://butantan.gov.br/noticias/inicio-do-seculo-xx-o-butantan-e-o-combate-a-epidemia-de-peste-bubonica\n\nA pulga, o rato, a peste e o Butantan: identificada há 125 anos por Vital Brazil (Instituto Butantan)\nhttps://www.butantan.gov.br/noticias/a-pulga-o-rato-a-peste-e-o-butantan-identificada-ha-125-anos-por-vital-brazil-epidemia-de-peste-bubonica-em-santos-levou-a-criacao-do-instituto\n\nDa peste bubônica à Covid-19: por que o Brasil parece marcar passo no combate a epidemias (Casa de Oswaldo Cruz / Fiocruz)\nhttps://www.coc.fiocruz.br/todas-as-noticias/da-peste-bubonica-a-covid-19-por-que-o-brasil-parece-marcar-passo-no-combate-a-epidemias/\n\nComo a peste bubônica fez surgir as duas instituições de pesquisa mais importantes do Brasil (Terra)\nhttps://www.terra.com.br/noticias/brasil/como-a-peste-bubonica-fez-surgir-as-duas-instituicoes-de-pesquisa-mais-importantes-do-brasil,7d226bd10571074f5bab457dd580b054mlyzn0l1.html\n\nPeste (Ministério da Saúde)\nhttps://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/p/peste\n\nManual de Vigilância e Controle da Peste (Ministério da Saúde)\nhttps://bvsms.saude.gov.br/bvs/publicacoes/manual_vigilancia_controle_peste.pdf\n\nA peste reaparece em casos nos Estados Unidos: será que há risco real de uma nova pandemia? (National Geographic Brasil)\nhttps://www.nationalgeographicbrasil.com/animais/2025/09/a-peste-reaparece-em-casos-nos-estados-unidos-sera-que-ha-risco-real-de-uma-nova-pandemia\n\nHospedaria em Quarentena: O Grande Inimigo (Museu da Imigração)\nhttps://museudaimigracao.org.br/en/blog/conhecendo-o-acervo/hospedaria-em-quarentena-o-grande-inimigo\n#PesteNegra #HistóriaEmDados #CiênciaDeDados #Quarentena #Shorts",
+  "public_metrics": {
+    "real_views": 128791,
+    "real_likes": 15980,
+    "real_comments": 174,
+    "real_shares": 0,
+    "real_reposts": 0,
+    "real_saves": 0,
+    "likes_hidden": false,
+    "like_to_view_ratio": 0.1241,
+    "comments_per_1k": 1.35,
+    "engagement_rate": 0.1254
+  },
+  "sample_comments": [],
+  "extraction_status": "OK (yt-dlp)"
+}

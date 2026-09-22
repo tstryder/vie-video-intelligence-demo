@@ -1,0 +1,159 @@
+{
+  "schema_version": "3.0",
+  "video_id": "RehqNl5xadA",
+  "source_url": "https://www.youtube.com/watch?v=RehqNl5xadA",
+  "metadata": {
+    "video_id": "RehqNl5xadA",
+    "source_url": "https://www.youtube.com/watch?v=RehqNl5xadA",
+    "platform": "youtube",
+    "duration_seconds": 171.861,
+    "fps": 30.0,
+    "width": 360,
+    "height": 640,
+    "aspect_ratio": 0.562,
+    "codec_video": "h264",
+    "codec_audio": "aac",
+    "bitrate_kbps": 596,
+    "file_size_bytes": 12818934
+  },
+  "measurements": {
+    "editing": {
+      "shot_count": 36,
+      "cut_count": 35,
+      "cuts_per_second": 0.204,
+      "avg_shot_duration": 4.772,
+      "median_shot_duration": 3.984,
+      "shortest_shot_duration": 1.333,
+      "longest_shot_duration": 14.8,
+      "cuts_in_first_3s": 0
+    },
+    "speech": {
+      "speech_duration_seconds": 171.72,
+      "speech_ratio": 0.999,
+      "word_count": 406,
+      "words_per_minute": 141.9
+    }
+  },
+  "observations": {
+    "visual": {
+      "has_webcam": false,
+      "has_center_caption": true,
+      "split_screen": true,
+      "face_visible": true,
+      "product_visible": false,
+      "environment_type": "studio"
+    },
+    "audio": {
+      "spoken_language": "pt",
+      "speech_present": true,
+      "music_present": false,
+      "sound_effects_present": false
+    },
+    "content": {
+      "category": "education_business",
+      "format": "talking_head_commentary"
+    }
+  },
+  "interpretations": {
+    "hook": {
+      "mechanisms": [
+        {
+          "type": "curiosity_gap",
+          "confidence": 0.95,
+          "evidence": [
+            {
+              "type": "transcript",
+              "timestamp_seconds": 0.0,
+              "text": "Em 29 de setembro de 1957, o céu dos urais ficou ruxo. Os jornais da região falaram em Oróra Boreal, era a mentira.",
+              "frame_id": null,
+              "observation": "Speaker introduces a mysterious historical event with false official explanations to spark immediate curiosity.",
+              "frame_timestamp_seconds": null,
+              "frame_delta_seconds": null
+            }
+          ]
+        }
+      ],
+      "subject": "story",
+      "opening_action": "direct_speech"
+    },
+    "narrative": {
+      "structure": "setup_escalation_payoff",
+      "information_flow": [
+        "immediate_hook",
+        "progressive_reveal",
+        "step_by_step"
+      ],
+      "evidence": [
+        {
+          "type": "transcript",
+          "timestamp_seconds": 9.12,
+          "text": "Às 1622, um tanque de lixo nuclear explodiu com força de 70 toneladas de TNT.",
+          "frame_id": null,
+          "observation": "The narrative escalates by revealing the actual explosion details and cover-up timeline.",
+          "frame_timestamp_seconds": null,
+          "frame_delta_seconds": null
+        }
+      ]
+    },
+    "rhetorical_mechanisms": [
+      {
+        "mechanism": "curiosity",
+        "confidence": 0.92,
+        "evidence": [
+          {
+            "type": "transcript",
+            "timestamp_seconds": 78.72,
+            "text": "E agora a parte que me interessa, como é que o mundo descobriu?",
+            "frame_id": null,
+            "observation": "Speaker creates a sub-question to drive further engagement and narrative progression.",
+            "frame_timestamp_seconds": null,
+            "frame_delta_seconds": null
+          }
+        ]
+      }
+    ],
+    "cta": {
+      "present": true,
+      "types": [
+        "follow"
+      ],
+      "explicit_or_implicit": "explicit",
+      "position": "end",
+      "text": "Segue pra não perder a próxima história.",
+      "evidence": [
+        {
+          "type": "transcript",
+          "timestamp_seconds": 169.64,
+          "text": "Segue pra não perder a próxima história.",
+          "frame_id": null,
+          "observation": "Explicit spoken and captioned call to action at the end of the video asking viewers to follow.",
+          "frame_timestamp_seconds": null,
+          "frame_delta_seconds": null
+        }
+      ]
+    }
+  },
+  "provenance": {
+    "schema_version": "3.0",
+    "pipeline_version": "3.0.0",
+    "model_name": "gemini-3.5-flash-lite",
+    "prompt_version": "semantic_analysis_v3",
+    "analysis_timestamp": "2026-09-20T04:18:10.951648+00:00"
+  },
+  "author": "The Beauty of Data",
+  "caption": "Em 29 de setembro de 1957, o céu dos Urais ficou roxo e os jornais\nfalaram em aurora boreal. Era mentira.\n\nUm tanque com 80 toneladas de rejeito líquido de plutônio explodiu\ncom força de 70 toneladas de TNT na usina Mayak, em uma cidade que\nnão existia em nenhum mapa soviético. 20 milhões de curies no ar.\n23 mil km² contaminados. 270 mil pessoas morando dentro da zona.\n\nE o mundo levou 32 anos para saber.\n\nO que me interessa nessa história não é a explosão. É COMO a verdade\nsaiu. Ninguém invadiu a Rússia. Ninguém roubou arquivo. O biólogo\nexilado Zhores Medvedev e, depois, três pesquisadores de Oak Ridge\nreconstruíram o acidente inteiro lendo artigos científicos soviéticos\npublicados abertamente. A censura apagou o nome da cidade e a data,\nmas deixou os números: estrôncio no solo, mortalidade dos peixes,\ncurvas de contaminação. Pela proporção entre os isótopos deu para\ncalcular a idade do rejeito e cravar o vazamento no fim de 1957.\n\nEm 2017, quando uma nuvem de rutênio-106 cobriu a Europa e a Rússia\nnegou de novo, 176 estações em 29 países fizeram 1.300 medições. O\nrastro apontou para o mesmo lugar. Dessa vez levou menos de dois anos.\n\nSegredo de Estado apaga o nome, apaga o mapa, apaga a aldeia.\nNão apaga o isótopo.\n\nMe chamo Ozzy e mostro a beleza escondida nos dados todos os dias.\nSe você gosta de história contada por número, se inscreve.\n\nFontes:\n1. Kyshtym disaster - Wikipedia\nhttps://en.wikipedia.org/wiki/Kyshtym_disaster\n\n2. Kyshtym disaster | Causes, Concealment, Revelation, & Facts - Britannica\nhttps://www.britannica.com/event/Kyshtym-disaster\n\n3. The Nuclear Disaster of Kyshtym 1957 and the Politics of the Cold War - Environment & Society Portal (Rachel Carson Center)\nhttps://www.environmentandsociety.org/arcadia/nuclear-disaster-kyshtym-1957-and-politics-cold-war\n\n4. Chelyabinsk nuclear waste accident, 1957 - Johnston's Archive\nhttps://www.johnstonsarchive.net/nuclear/radevents/1957USSR2.html\n\n5. Worst nuclear waste accident - Guinness World Records\nhttps://www.guinnessworldrecords.com/world-records/68495-worst-nuclear-waste-accident\n\n6. The Kyshtym disaster: Russia's hidden nuclear crisis - Sky HISTORY\nhttps://www.history.co.uk/articles/kyshtym-disaster-russia-hidden-nuclear-crisis\n\n7. The Kyshtym Disaster of 1957: The largest nuclear disaster we've never heard of - The Vintage News\nhttps://www.thevintagenews.com/2018/01/17/the-kyshtym-disaster-of-1957/\n\n8. The Unknown Nuclear Disaster That the Soviet Union Kept Secret for Decades - TheCollector\nhttps://www.thecollector.com/kyshtym-disaster-heres-what-happened/\n\n9. Kyshtym Disaster - Atomic Photographers & Artists\nhttps://atomicphotographers.com/atomic-sites/kyshtym-disaster/\n\n10. Analysis of the 1957-58 Soviet Nuclear Accident (ORNL-5613) - Trabalka, Eyman & Auerbach, Oak Ridge National Laboratory, 1979\nhttps://www.osti.gov/servlets/purl/5638277/\n\n11. An Analysis of the Alleged Kyshtym Disaster (LA-9217-MS) - Soran & Stillman, Los Alamos National Laboratory, 1982\nhttps://inis.iaea.org/collection/NCLCollectionStore/_Public/14/724/14724059.pdf\n\n12. Zhores Medvedev and the battle for truth in Soviet science - Aeon\nhttps://aeon.co/ideas/zhores-medvedev-and-the-battle-for-truth-in-soviet-science\n\n13. Soviet nuclear disasters: Kyshtym - Understanding Society\nhttps://understandingsociety.blogspot.com/2019/07/soviet-nuclear-disasters-kyshtym.html\n\n14. Nuclear Disaster in the Urals (resenha) - Kirkus Reviews\nhttps://www.kirkusreviews.com/book-reviews/a/zhores-a-medvedev/nuclear-disaster-in-the-urals/\n\n15. Exiled dissident revealed horrific truth about nuclear disaster in Soviet Union - The Post / PressReader\nhttps://www.pressreader.com/new-zealand/the-post-1022/20181224/282192242098253\n\n16. Zhores Medvedev - Wikipedia\nhttps://en.wikipedia.org/wiki/Zhores_Medvedev\n\n17. Ecosystem effects in the lake affected by the Kyshtym accident - Journal of Environmental Radioactivity (ScienceDirect)\nhttps://www.sciencedirect.com/science/article/abs/pii/S0265931X25000281\n\n18. Radionuclides in terrestrial ecosystems of the zone of Kyshtym accident in the Urals - Journal of Environmental Radioactivity (ScienceDirect)\nhttps://www.sciencedirect.com/science/article/abs/pii/S0265931X08000945\n\n19. The Kyshtym accident, 29th September 1957 - Norwegian Radiation Protection Authority (StralevernInfo 8/2007)\nhttps://dsa.no/publikasjoner/_/attachment/inline/3bbc565a-72d4-43f7-afa6-21656e49424c:812a3ddc7f5bf449b1a5dd924bd4e7ae82b0a206/StralevernInfo_8_2007.pdf\n\n20. Overview of Dose Assessment Developments and the Health of Riverside Residents Close to the \"Mayak\" PA Facilities, Russia - Int. J. Environ. Res. Public Health\nhttps://www.ncbi.nlm.nih.gov/pmc/articles/PMC2672329\n\n21. Mayak/Kyschtym - Hibakusha Worldwide (IPPNW)\nhttps://hibakusha-worldwide.org/en/locations/mayakkyschtym\n\n#Kyshtym #DesastreNuclear #GuerraFria #CienciaDeDados #HistoriaReal",
+  "public_metrics": {
+    "real_views": 85879,
+    "real_likes": 11218,
+    "real_comments": 247,
+    "real_shares": 0,
+    "real_reposts": 0,
+    "real_saves": 0,
+    "likes_hidden": false,
+    "like_to_view_ratio": 0.1306,
+    "comments_per_1k": 2.88,
+    "engagement_rate": 0.1335
+  },
+  "sample_comments": [],
+  "extraction_status": "OK (yt-dlp)"
+}

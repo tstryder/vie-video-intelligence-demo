@@ -1,0 +1,177 @@
+{
+  "schema_version": "3.0",
+  "video_id": "Ke31DMlnS1U",
+  "source_url": "https://www.youtube.com/watch?v=Ke31DMlnS1U",
+  "metadata": {
+    "video_id": "Ke31DMlnS1U",
+    "source_url": "https://www.youtube.com/watch?v=Ke31DMlnS1U",
+    "platform": "youtube",
+    "duration_seconds": 25.813,
+    "fps": 30.0,
+    "width": 360,
+    "height": 640,
+    "aspect_ratio": 0.562,
+    "codec_video": "h264",
+    "codec_audio": "aac",
+    "bitrate_kbps": 595,
+    "file_size_bytes": 1920302
+  },
+  "measurements": {
+    "editing": {
+      "shot_count": 12,
+      "cut_count": 11,
+      "cuts_per_second": 0.426,
+      "avg_shot_duration": 2.144,
+      "median_shot_duration": 1.567,
+      "shortest_shot_duration": 0.533,
+      "longest_shot_duration": 6.3,
+      "cuts_in_first_3s": 0
+    },
+    "speech": {
+      "speech_duration_seconds": 27.56,
+      "speech_ratio": 1.068,
+      "word_count": 68,
+      "words_per_minute": 148.0
+    }
+  },
+  "observations": {
+    "visual": {
+      "has_webcam": false,
+      "has_center_caption": true,
+      "split_screen": false,
+      "face_visible": true,
+      "product_visible": true,
+      "environment_type": "kitchen"
+    },
+    "audio": {
+      "spoken_language": "pt",
+      "speech_present": true,
+      "music_present": false,
+      "sound_effects_present": false
+    },
+    "content": {
+      "category": "food_cooking",
+      "format": "tutorial_howto"
+    }
+  },
+  "interpretations": {
+    "hook": {
+      "mechanisms": [
+        {
+          "type": "immediate_demonstration",
+          "confidence": 0.95,
+          "evidence": [
+            {
+              "type": "visual",
+              "timestamp_seconds": 0.0,
+              "text": null,
+              "frame_id": "frame_000_0.00s.jpg",
+              "observation": "Host dressed as a chef holds a container of herbs directly in front of the camera while stirring a pot.",
+              "frame_timestamp_seconds": 0.0,
+              "frame_delta_seconds": 0.0
+            },
+            {
+              "type": "transcript",
+              "timestamp_seconds": 0.0,
+              "text": "cheiro verde salsa e cebolinha tem aqui eu vou só no cheiro verde a salsa e",
+              "frame_id": null,
+              "observation": "Host immediately starts talking about ingredients while cooking.",
+              "frame_timestamp_seconds": null,
+              "frame_delta_seconds": null
+            }
+          ]
+        }
+      ],
+      "subject": "product",
+      "opening_action": "direct_speech"
+    },
+    "narrative": {
+      "structure": "setup_escalation_payoff",
+      "information_flow": [
+        "immediate_hook",
+        "progressive_reveal"
+      ],
+      "evidence": [
+        {
+          "type": "mixed",
+          "timestamp_seconds": 0.0,
+          "text": "cheiro verde salsa e cebolinha tem aqui",
+          "frame_id": "frame_000_0.00s.jpg",
+          "observation": "Host introduces ingredient selection process.",
+          "frame_timestamp_seconds": 0.0,
+          "frame_delta_seconds": 0.0
+        },
+        {
+          "type": "mixed",
+          "timestamp_seconds": 23.23,
+          "text": "MEU PRIMEIRO VÍDEO LONGO SEGUNDA-FEIRA 07/09 AO MEIO-DIA",
+          "frame_id": "frame_006_23.23s.jpg",
+          "observation": "Video transitions to a promotional CTA announcement at the end.",
+          "frame_timestamp_seconds": 23.23,
+          "frame_delta_seconds": 0.0
+        }
+      ]
+    },
+    "rhetorical_mechanisms": [
+      {
+        "mechanism": "humor",
+        "confidence": 0.85,
+        "evidence": [
+          {
+            "type": "visual",
+            "timestamp_seconds": 0.0,
+            "text": null,
+            "frame_id": "frame_000_0.00s.jpg",
+            "observation": "Host wearing a chef hat and apron with a rat graphic mimicking Ratatouille while questioning herb types.",
+            "frame_timestamp_seconds": 0.0,
+            "frame_delta_seconds": 0.0
+          }
+        ]
+      }
+    ],
+    "cta": {
+      "present": true,
+      "types": [
+        "click_link",
+        "save"
+      ],
+      "explicit_or_implicit": "explicit",
+      "position": "end",
+      "text": "MEU PRIMEIRO VÍDEO LONGO SEGUNDA-FEIRA 07/09 AO MEIO-DIA youtube.com/braian",
+      "evidence": [
+        {
+          "type": "visual",
+          "timestamp_seconds": 23.23,
+          "text": "youtube.com/braian",
+          "frame_id": "frame_006_23.23s.jpg",
+          "observation": "Text overlay appears displaying date, time, and channel URL for a long video release.",
+          "frame_timestamp_seconds": 23.23,
+          "frame_delta_seconds": 0.0
+        }
+      ]
+    }
+  },
+  "provenance": {
+    "schema_version": "3.0",
+    "pipeline_version": "3.0.0",
+    "model_name": "gemini-3.5-flash-lite",
+    "prompt_version": "semantic_analysis_v3",
+    "analysis_timestamp": "2026-09-20T04:26:35.841963+00:00"
+  },
+  "author": "Braian Rizzo",
+  "caption": "EITAAAAAAAA, CHEGOU A HORA! Estreia SEGUNDA-FEIRA, DIA 07/09, AO MEIO-DIA, aqui no canal! Depois de tanto tempo só de shorts, finalmente vou mostrar todo o meu talento na cozinha (ou a completa falta dele) num vídeo completo, o primeiro episódio de APENAS A PRIMEIRA série de tudo que vem por aí.\n\nSe inscreve e ativa o sininho 🔔 pra não perder a estreia e poder contar depois que estava aqui desde o começo.\n\n#shorts #estreia #meuprimeirovideolongo #cozinha #comidasduvidosas",
+  "public_metrics": {
+    "real_views": 126363,
+    "real_likes": 8277,
+    "real_comments": 156,
+    "real_shares": 0,
+    "real_reposts": 0,
+    "real_saves": 0,
+    "likes_hidden": false,
+    "like_to_view_ratio": 0.0655,
+    "comments_per_1k": 1.23,
+    "engagement_rate": 0.0667
+  },
+  "sample_comments": [],
+  "extraction_status": "OK (yt-dlp)"
+}

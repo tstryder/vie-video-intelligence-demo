@@ -1,0 +1,192 @@
+{
+  "schema_version": "3.0",
+  "video_id": "Q8QiXX8-5cY",
+  "source_url": "https://www.youtube.com/watch?v=Q8QiXX8-5cY",
+  "metadata": {
+    "video_id": "Q8QiXX8-5cY",
+    "source_url": "https://www.youtube.com/watch?v=Q8QiXX8-5cY",
+    "platform": "youtube",
+    "duration_seconds": 179.051,
+    "fps": 30.0,
+    "width": 360,
+    "height": 640,
+    "aspect_ratio": 0.562,
+    "codec_video": "h264",
+    "codec_audio": "aac",
+    "bitrate_kbps": 595,
+    "file_size_bytes": 13334951
+  },
+  "measurements": {
+    "editing": {
+      "shot_count": 49,
+      "cut_count": 48,
+      "cuts_per_second": 0.268,
+      "avg_shot_duration": 3.653,
+      "median_shot_duration": 3.0,
+      "shortest_shot_duration": 0.633,
+      "longest_shot_duration": 17.0,
+      "cuts_in_first_3s": 1
+    },
+    "speech": {
+      "speech_duration_seconds": 178.8,
+      "speech_ratio": 0.999,
+      "word_count": 440,
+      "words_per_minute": 147.7
+    }
+  },
+  "observations": {
+    "visual": {
+      "has_webcam": false,
+      "has_center_caption": true,
+      "split_screen": false,
+      "face_visible": true,
+      "product_visible": false,
+      "environment_type": "indoor_studio"
+    },
+    "audio": {
+      "spoken_language": "pt",
+      "speech_present": true,
+      "music_present": true,
+      "sound_effects_present": true
+    },
+    "content": {
+      "category": "education_business",
+      "format": "talking_head_commentary"
+    }
+  },
+  "interpretations": {
+    "hook": {
+      "mechanisms": [
+        {
+          "type": "curiosity_gap",
+          "confidence": 0.95,
+          "evidence": [
+            {
+              "type": "transcript",
+              "timestamp_seconds": 0.0,
+              "text": "Em abril de 1965, o jornal soviético Pravda anunciou que a humanidade tinha encontrado outra civilização.",
+              "frame_id": null,
+              "observation": "Narrator opens with a historical claim about discovering another civilization, creating immediate curiosity.",
+              "frame_timestamp_seconds": null,
+              "frame_delta_seconds": null
+            }
+          ]
+        }
+      ],
+      "subject": "statement",
+      "opening_action": "direct_speech"
+    },
+    "narrative": {
+      "structure": "setup_escalation_payoff",
+      "information_flow": [
+        "immediate_hook",
+        "progressive_reveal",
+        "step_by_step"
+      ],
+      "evidence": [
+        {
+          "type": "transcript",
+          "timestamp_seconds": 0.0,
+          "text": "Em abril de 1965, o jornal soviético Pravda anunciou que a humanidade tinha encontrado outra civilização.",
+          "frame_id": null,
+          "observation": "Setup phase presenting the historical anomaly.",
+          "frame_timestamp_seconds": null,
+          "frame_delta_seconds": null
+        },
+        {
+          "type": "transcript",
+          "timestamp_seconds": 53.2,
+          "text": "E ela cabia em uma variável só, Watts. Nada de idioma, religião ou formato de nave.",
+          "frame_id": null,
+          "observation": "Escalation phase explaining Kardashev scale.",
+          "frame_timestamp_seconds": null,
+          "frame_delta_seconds": null
+        },
+        {
+          "type": "transcript",
+          "timestamp_seconds": 167.0,
+          "text": "E o número que ela devolve é 0,73. A gente não chegou no primeiro degrau.",
+          "frame_id": null,
+          "observation": "Payoff revealing humanity's current standing on the scale.",
+          "frame_timestamp_seconds": null,
+          "frame_delta_seconds": null
+        }
+      ]
+    },
+    "rhetorical_mechanisms": [
+      {
+        "mechanism": "curiosity",
+        "confidence": 0.9,
+        "evidence": [
+          {
+            "type": "transcript",
+            "timestamp_seconds": 0.0,
+            "text": "Em abril de 1965, o jornal soviético Pravda anunciou que a humanidade tinha encontrado outra civilização.",
+            "frame_id": null,
+            "observation": "Introduces a mysterious historic event to engage the viewer.",
+            "frame_timestamp_seconds": null,
+            "frame_delta_seconds": null
+          }
+        ]
+      },
+      {
+        "mechanism": "tension",
+        "confidence": 0.85,
+        "evidence": [
+          {
+            "type": "transcript",
+            "timestamp_seconds": 11.5,
+            "text": "Mas o erro deixou a régua que a ciência usa até hoje para medir o avanço de uma civilização.",
+            "frame_id": null,
+            "observation": "Builds narrative tension around a scientific error and its consequences.",
+            "frame_timestamp_seconds": null,
+            "frame_delta_seconds": null
+          }
+        ]
+      }
+    ],
+    "cta": {
+      "present": true,
+      "types": [
+        "follow"
+      ],
+      "explicit_or_implicit": "explicit",
+      "position": "end",
+      "text": "Segue para não perder a próxima história.",
+      "evidence": [
+        {
+          "type": "transcript",
+          "timestamp_seconds": 176.9,
+          "text": "Segue para não perder a próxima história.",
+          "frame_id": null,
+          "observation": "Host directly asks the viewer to follow at the end of the video.",
+          "frame_timestamp_seconds": null,
+          "frame_delta_seconds": null
+        }
+      ]
+    }
+  },
+  "provenance": {
+    "schema_version": "3.0",
+    "pipeline_version": "3.0.0",
+    "model_name": "gemini-3.5-flash-lite",
+    "prompt_version": "semantic_analysis_v3",
+    "analysis_timestamp": "2026-09-20T04:15:48.014804+00:00"
+  },
+  "author": "The Beauty of Data",
+  "caption": "Em 1965, um jornal soviético anunciou que a humanidade tinha achado outra civilização. O sinal vinha de 8 bilhões de anos-luz. Era mentira — mas o erro criou a régua que a ciência usa até hoje pra medir o avanço de qualquer civilização.\n\nNesse vídeo eu conto como o astrofísico Nikolai Kardashev transformou um quasar confundido com sinal alienígena numa escala científica baseada só em energia (watts), como Carl Sagan preencheu os buracos entre os degraus com uma fórmula, e por que a humanidade — mesmo tendo dobrado o consumo de energia do planeta em 52 anos — ainda tira nota 0,73. A gente nem chegou no primeiro degrau.\n\nSe você curte ciência, história e números que mudam a forma como você vê o mundo, é exatamente isso que eu faço aqui todos os dias. Se inscreve pra não perder a próxima.\n\nFontes:\n\nTransmission of Information by Extraterrestrial Civilizations (Kardashev, 1964, Soviet Astronomy)\nhttps://articles.adsabs.harvard.edu/pdf/1964SvA.....8..217K\n\nKardashev scale - Wikipedia\nhttps://en.wikipedia.org/wiki/Kardashev_scale\n\nEscala de Kardashev - Wikipedia (PT)\nhttps://pt.wikipedia.org/wiki/Escala_de_Kardashev\n\nKardashev scale | Origin, Definition, Applications, Variations, & Facts - Britannica\nhttps://www.britannica.com/science/Kardashev-scale\n\nNikolai Kardashev - Wikipedia\nhttps://en.wikipedia.org/wiki/Nikolai_Kardashev\n\nNikolai Kardashev, 1932-2019 - METI International\nhttp://meti.org/en/blog/nikolai-kardashev-1932-2019\n\nCTA-102 - David Darling, Encyclopedia of Science\nhttps://www.daviddarling.info/encyclopedia/C/CTA102.html\n\nCTA-102 - Grokipedia\nhttps://grokipedia.com/page/cta_102\n\nWhat is the Kardashev Scale? - Universe Today\nhttps://www.universetoday.com/articles/what-is-the-kardashev-scale\n\nA Brief-ish History of SETI. Part III: Dyson and Kardashev - Universe Today\nhttps://www.universetoday.com/articles/a-brief-ish-history-of-seti-part-iii-dyson-and-kardashev\n\nByurakan Conference - Wikipedia\nhttps://en.wikipedia.org/wiki/Byurakan_Conference\n\nCarl Sagan - Kardashev Scale Wiki\nhttps://kardashev.fandom.com/wiki/Carl_Sagan\n\nThe Mathematics of K = 0.73 - Kardashev1\nhttps://www.kardashev1.com/scale\n\nWaste Heat and Habitability: Constraints from Technological Energy Consumption (arXiv)\nhttps://arxiv.org/pdf/2409.06737\n\nKardashev's Conundrum: Statistical Falsification of Exponential Energy Growth (arXiv)\nhttps://arxiv.org/pdf/2604.17516\n\nThe Kardashev Scale Doesn't Describe Aliens. It Describes Us. - Predict / Medium\nhttps://medium.com/predict/the-kardashev-scale-doesnt-describe-aliens-it-describes-us-3fd0eea7e887\n\nKardashev Scale: Type I, II, III Civilizations - Orbit Codex\nhttps://orbitcodex.com/knowledge-base/kardashev-scale\n\nEnergy Institute releases 2026 Statistical Review of World Energy - DieselNet\nhttps://dieselnet.com/news/2026/07energyreview.php\n\nEnergy Institute Statistical Review of World Energy - Ember\nhttps://ember-energy.org/latest-insights/energy-institute-statistical-review-of-world-energy/\n\nEI Statistical Review of World Energy 2025 (tabelas por país)\nhttps://www.slideshare.net/slideshow/ei-statistical-review-of-world-energy-2025-49a8/283551942\n\nStatistical Review of World Energy 2025 - Some Highlights - Friends of Science\nhttps://blog.friendsofscience.org/2025/06/30/statistical-review-of-world-energy-2025-some-highlights/\n\nProject Hephaistos - II. Dyson sphere candidates from Gaia DR3, 2MASS, and WISE (MNRAS, 2024)\nhttps://academic.oup.com/mnras/article/531/1/695/7665761\n\nSeven Dyson Sphere Candidates - Centauri Dreams\nhttps://www.centauri-dreams.org/2024/05/18/seven-dyson-sphere-candidates/\n\nBackground Contamination of the Project Hephaistos Dyson Spheres Candidates - IOPscience\nhttps://iopscience.iop.org/article/10.3847/2515-5172/ad5017\n\nHigh-resolution imaging of the radio source associated with Project Hephaistos Dyson Sphere Candidate G - MNRAS Letters\nhttps://academic.oup.com/mnrasl/article/538/1/L56/7954734\n\nProject Hephaistos - III. Characterizing anomalous infrared sources identified as Dyson-sphere candidates (arXiv, 2026)\nhttps://arxiv.org/abs/2607.25701\n\nKardashev: indice mede desenvolvimento da sociedade pela energia gasta - Metropoles\nhttps://www.metropoles.com/ciencia/humanidade-escala-kardashev\n\nO que e a Escala de Kardashev e onde nos encaixamos nela? - Canaltech\nhttps://canaltech.com.br/espaco/o-que-e-a-escala-de-kardashev-204190/\n\n#Kardashev #Ciência #Energia #Espaço",
+  "public_metrics": {
+    "real_views": 58803,
+    "real_likes": 7482,
+    "real_comments": 132,
+    "real_shares": 0,
+    "real_reposts": 0,
+    "real_saves": 0,
+    "likes_hidden": false,
+    "like_to_view_ratio": 0.1272,
+    "comments_per_1k": 2.24,
+    "engagement_rate": 0.1295
+  },
+  "sample_comments": [],
+  "extraction_status": "OK (yt-dlp)"
+}

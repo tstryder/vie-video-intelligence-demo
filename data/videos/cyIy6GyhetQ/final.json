@@ -1,0 +1,192 @@
+{
+  "schema_version": "3.0",
+  "video_id": "cyIy6GyhetQ",
+  "source_url": "https://www.youtube.com/watch?v=cyIy6GyhetQ",
+  "metadata": {
+    "video_id": "cyIy6GyhetQ",
+    "source_url": "https://www.youtube.com/watch?v=cyIy6GyhetQ",
+    "platform": "youtube",
+    "duration_seconds": 157.099,
+    "fps": 30.0,
+    "width": 360,
+    "height": 640,
+    "aspect_ratio": 0.562,
+    "codec_video": "h264",
+    "codec_audio": "aac",
+    "bitrate_kbps": 595,
+    "file_size_bytes": 11698163
+  },
+  "measurements": {
+    "editing": {
+      "shot_count": 38,
+      "cut_count": 37,
+      "cuts_per_second": 0.236,
+      "avg_shot_duration": 4.132,
+      "median_shot_duration": 4.2,
+      "shortest_shot_duration": 0.8,
+      "longest_shot_duration": 11.733,
+      "cuts_in_first_3s": 0
+    },
+    "speech": {
+      "speech_duration_seconds": 156.7,
+      "speech_ratio": 0.997,
+      "word_count": 416,
+      "words_per_minute": 159.3
+    }
+  },
+  "observations": {
+    "visual": {
+      "has_webcam": false,
+      "has_center_caption": true,
+      "split_screen": true,
+      "face_visible": true,
+      "product_visible": false,
+      "environment_type": "studio"
+    },
+    "audio": {
+      "spoken_language": "pt",
+      "speech_present": true,
+      "music_present": true,
+      "sound_effects_present": true
+    },
+    "content": {
+      "category": "education_business",
+      "format": "talking_head_commentary"
+    }
+  },
+  "interpretations": {
+    "hook": {
+      "mechanisms": [
+        {
+          "type": "curiosity_gap",
+          "confidence": 0.95,
+          "evidence": [
+            {
+              "type": "transcript",
+              "timestamp_seconds": 0.0,
+              "text": "Em 2010, uma empresa gastou 300 milhões de dólares para economizar 3 milésimos de segundo.",
+              "frame_id": null,
+              "observation": "Speaker states an extreme, counterintuitive financial fact creating an immediate curiosity gap about the underlying reason.",
+              "frame_timestamp_seconds": null,
+              "frame_delta_seconds": null
+            }
+          ]
+        }
+      ],
+      "subject": "statement",
+      "opening_action": "direct_speech"
+    },
+    "narrative": {
+      "structure": "setup_escalation_payoff",
+      "information_flow": [
+        "immediate_hook",
+        "progressive_reveal",
+        "step_by_step"
+      ],
+      "evidence": [
+        {
+          "type": "transcript",
+          "timestamp_seconds": 0.0,
+          "text": "Em 2010, uma empresa gastou 300 milhões...",
+          "frame_id": null,
+          "observation": "Setup introducing the high-cost project.",
+          "frame_timestamp_seconds": null,
+          "frame_delta_seconds": null
+        },
+        {
+          "type": "transcript",
+          "timestamp_seconds": 35.2,
+          "text": "Preço leva tempo para viajar de uma bolsa até a outra.",
+          "frame_id": null,
+          "observation": "Escalation explaining the mechanics of high-frequency trading latency.",
+          "frame_timestamp_seconds": null,
+          "frame_delta_seconds": null
+        },
+        {
+          "type": "transcript",
+          "timestamp_seconds": 139.2,
+          "text": "Quando você aperta comprar no aplicativo...",
+          "frame_id": null,
+          "observation": "Payoff connecting the macro concept to the individual viewer's experience.",
+          "frame_timestamp_seconds": null,
+          "frame_delta_seconds": null
+        }
+      ]
+    },
+    "rhetorical_mechanisms": [
+      {
+        "mechanism": "curiosity",
+        "confidence": 0.9,
+        "evidence": [
+          {
+            "type": "transcript",
+            "timestamp_seconds": 0.0,
+            "text": "Em 2010, uma empresa gastou 300 milhões de dólares para economizar 3 milésimos de segundo.",
+            "frame_id": null,
+            "observation": "Spoken hook presenting a shocking expenditure for a seemingly negligible time savings.",
+            "frame_timestamp_seconds": null,
+            "frame_delta_seconds": null
+          }
+        ]
+      },
+      {
+        "mechanism": "surprise",
+        "confidence": 0.85,
+        "evidence": [
+          {
+            "type": "transcript",
+            "timestamp_seconds": 63.7,
+            "text": "2 anos depois, o cabo de 300 milhões já estava obsoleto.",
+            "frame_id": null,
+            "observation": "Revealing the rapid obsolescence of a massive multi-million dollar infrastructure investment.",
+            "frame_timestamp_seconds": null,
+            "frame_delta_seconds": null
+          }
+        ]
+      }
+    ],
+    "cta": {
+      "present": true,
+      "types": [
+        "follow"
+      ],
+      "explicit_or_implicit": "explicit",
+      "position": "end",
+      "text": "Segue para não perder a próxima história.",
+      "evidence": [
+        {
+          "type": "transcript",
+          "timestamp_seconds": 155.2,
+          "text": "Segue para não perder a próxima história.",
+          "frame_id": null,
+          "observation": "Direct call to action at the conclusion of the video asking the viewer to follow.",
+          "frame_timestamp_seconds": null,
+          "frame_delta_seconds": null
+        }
+      ]
+    }
+  },
+  "provenance": {
+    "schema_version": "3.0",
+    "pipeline_version": "3.0.0",
+    "model_name": "gemini-3.5-flash-lite",
+    "prompt_version": "semantic_analysis_v3",
+    "analysis_timestamp": "2026-09-20T04:13:24.660122+00:00"
+  },
+  "author": "The Beauty of Data",
+  "caption": "Em 2010 uma empresa gastou 300 milhões de dólares para economizar três milésimos de segundo. Não era foguete, não era remédio — era um cabo enterrado entre Chicago e Nova York.\n\nA Spread Networks abriu 1.300 km na linha mais reta que a geografia permitia. Furou as montanhas Allegheny em vez de contornar, em dois anos de obra mantidos em segredo. O sinal passou a fazer ida e volta em 13 milissegundos, contra 16 antes. Um piscar de olhos leva mais de cem.\n\nO motivo cabe numa frase: preço leva tempo para viajar de uma bolsa até a outra. Quando o preço muda em Chicago, Nova York ainda não sabe — e nessa janela alguém compra de um lado e vende do outro no mesmo instante. A conta que circula no setor é de que um milissegundo de vantagem vale perto de 100 milhões de dólares por ano.\n\n\nNo Brasil o data center da B3 fica em Santana de Parnaíba. Empresas alugam racks lá dentro para colar seus servidores nos da própria bolsa. A latência média de execução caiu de 1,2 milissegundo em 2023 para 350 microssegundos, e algoritmos de alta frequência já respondem por cerca de 40% dos negócios com ações no país.\n\nQuando você aperta comprar no aplicativo, seu clique leva dezenas de milissegundos para chegar. Você não disputa preço com outros investidores. Você disputa com a velocidade da luz.\n\nEu mostro a beleza escondida nos dados todos os dias. \n\nFontes:\nAn Alternative to High-Frequency Trading — Chicago Booth Review\nhttps://www.chicagobooth.edu/review/alternative-high-frequency-trading\n\nThe Rigged Market: A Review of Flash Boys — Harvard Political Review\nhttps://harvardpolitics.com/rigged-market-review-flash-boys/\n\nSpread Networks — Wikipedia\nhttps://en.wikipedia.org/wiki/Spread_Networks\n\nZayo Group Holdings, Inc. — Form 10-K FY2018 (aquisição da Spread Networks)\nhttps://www.sec.gov/Archives/edgar/data/0001502756/000155837018007219/zgl-20180630x10k.htm\n\nSpending $300 Million to Save Three Milliseconds — Chaikin Analytics\nhttps://chaikinanalytics.com/powerfeed/articles/spending-300-million-to-save-three-milliseconds\n\nA short story about how to spend $300m — Jim Campbell\nhttps://jimdcampbell.com/2016/09/01/a-short-story-about-how-to-spend-300m/\n\nTowards a Speed of Light Internet — arXiv (1505.03449)\nhttps://arxiv.org/pdf/1505.03449\n\nChicago high-speed trading firm Jump buys microwave towers — Crain's Chicago Business\nhttps://www.chicagobusiness.com/article/20140717/NEWS01/140719847/chicago-high-speed-trading-firm-jump-buys-microwave-towers\n\nThe market quality implications of speed in cross-platform trading: Evidence from Frankfurt-London microwave networks — ScienceDirect\nhttps://www.sciencedirect.com/science/article/pii/S1386418123000514\n\nLatency Arbitrage Explained: How Microwave Towers and Colocation Shape High-Frequency Trading Between Chicago and New Jersey — Young and Calculated\nhttps://youngandcalculated.substack.com/p/latency-arbitrage-explained-how-microwave\n\nHigh Frequency Traders Turn to Towers for Competitive Advantage — Inside Towers\nhttps://insidetowers.com/cell-tower-news-high-frequency-traders-turn-towers-competitive-advantage/\n\nMarket Data Distribution Parity: Redefining Fairness — A-Team Insight\nhttps://a-teaminsight.com/blog/market-data-distribution-parity-redefining-fairness/\n\nICE Colocation (cabos de comprimento equalizado) — Intercontinental Exchange\nhttps://www.ice.com/fixed-income-data-services/access-and-delivery/connectivity-and-feeds/icecolocation\n\nSelf-Regulatory Organizations; The Nasdaq Stock Market LLC; Notice of Filing... To Expand Its Co-Location Services — Federal Register\nhttps://www.federalregister.gov/documents/2024/09/24/2024-21750/self-regulatory-organizations-the-nasdaq-stock-market-llc-notice-of-filing-and-immediate\n\nB3 reduz latência em 70% e acelera negociações para 350 microssegundos — IT Forum\nhttps://itforum.com.br/noticias/b3-reduz-latencia-70-acelera-negociacoes/\n\nB3 moderniza plataformas e reduz em 70% tempo de conclusão dos negócios — TI INSIDE Online\nhttps://tiinside.com.br/04/04/2025/b3-moderniza-plataformas-e-reduz-em-70-tempo-de-conclusao-dos-negocios/\n\nB3 oferta dispositivos mais potentes em meio à alta das operações de alta frequência — IstoÉ Dinheiro / Reuters\nhttps://istoedinheiro.com.br/b3-oferta-dispositivos-mais\n\nPor dentro da B3: a tecnologia que move bilhões na bolsa brasileira — Estado de Minas\nhttps://www.em.com.br/trends/2026/02/7358421-por-dentro-da-b3-a-tecnologia-que-move-bilhoes-na-bolsa-brasileira.html\n\nRenaissance Technologies: Business Breakdown — Daniel Scrivner\nhttps://www.danielscrivner.com/renaissance-technologies-business-breakdown/\n\nInside the wild world of high-frequency trading — Data Center Dynamics\nhttps://www.datacenterdynamics.com/en/analysis/inside-the-wild-world-of-high-frequency-trading/\n\nThe Cost of Latency in High-Frequency Trading — Moallemi & Saglam (Columbia)\nhttps://moallemi.com/ciamac/papers/latency-2009.pdf\n#dados #bolsadevalores #tecnologia #curiosidades #investimentos",
+  "public_metrics": {
+    "real_views": 69258,
+    "real_likes": 9619,
+    "real_comments": 132,
+    "real_shares": 0,
+    "real_reposts": 0,
+    "real_saves": 0,
+    "likes_hidden": false,
+    "like_to_view_ratio": 0.1389,
+    "comments_per_1k": 1.91,
+    "engagement_rate": 0.1408
+  },
+  "sample_comments": [],
+  "extraction_status": "OK (yt-dlp)"
+}

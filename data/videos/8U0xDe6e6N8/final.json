@@ -1,0 +1,162 @@
+{
+  "schema_version": "3.0",
+  "video_id": "8U0xDe6e6N8",
+  "source_url": "https://www.youtube.com/watch?v=8U0xDe6e6N8",
+  "metadata": {
+    "video_id": "8U0xDe6e6N8",
+    "source_url": "https://www.youtube.com/watch?v=8U0xDe6e6N8",
+    "platform": "youtube",
+    "duration_seconds": 69.269,
+    "fps": 30.0,
+    "width": 360,
+    "height": 640,
+    "aspect_ratio": 0.562,
+    "codec_video": "h264",
+    "codec_audio": "aac",
+    "bitrate_kbps": 595,
+    "file_size_bytes": 5155131
+  },
+  "measurements": {
+    "editing": {
+      "shot_count": 13,
+      "cut_count": 12,
+      "cuts_per_second": 0.173,
+      "avg_shot_duration": 5.323,
+      "median_shot_duration": 3.867,
+      "shortest_shot_duration": 0.733,
+      "longest_shot_duration": 15.333,
+      "cuts_in_first_3s": 1
+    },
+    "speech": {
+      "speech_duration_seconds": 67.28,
+      "speech_ratio": 0.971,
+      "word_count": 259,
+      "words_per_minute": 231.0
+    }
+  },
+  "observations": {
+    "visual": {
+      "has_webcam": false,
+      "has_center_caption": true,
+      "split_screen": true,
+      "face_visible": true,
+      "product_visible": true,
+      "environment_type": "indoor"
+    },
+    "audio": {
+      "spoken_language": "pt",
+      "speech_present": true,
+      "music_present": false,
+      "sound_effects_present": false
+    },
+    "content": {
+      "category": "food_cooking",
+      "format": "product_review"
+    }
+  },
+  "interpretations": {
+    "hook": {
+      "mechanisms": [
+        {
+          "type": "visual_reveal",
+          "confidence": 0.95,
+          "evidence": [
+            {
+              "type": "visual",
+              "timestamp_seconds": 0.0,
+              "text": null,
+              "frame_id": "frame_000_0.00s.jpg",
+              "observation": "Speaker immediately presents a custom gourd filled with coffee chimarrão to the camera lens at the start of the video.",
+              "frame_timestamp_seconds": 0.0,
+              "frame_delta_seconds": 0.0
+            }
+          ]
+        }
+      ],
+      "subject": "product",
+      "opening_action": "visual_stunt"
+    },
+    "narrative": {
+      "structure": "demonstration_explanation",
+      "information_flow": [
+        "immediate_hook",
+        "step_by_step",
+        "progressive_reveal"
+      ],
+      "evidence": [
+        {
+          "type": "mixed",
+          "timestamp_seconds": 12.44,
+          "text": "Começo normalmente como se fosse abrir um pacote de erva...",
+          "frame_id": "frame_003_12.23s.jpg",
+          "observation": "The speaker guides the audience through the preparation steps of making coffee chimarrão.",
+          "frame_timestamp_seconds": 12.23,
+          "frame_delta_seconds": 0.21
+        }
+      ]
+    },
+    "rhetorical_mechanisms": [
+      {
+        "mechanism": "humor",
+        "confidence": 0.9,
+        "evidence": [
+          {
+            "type": "transcript",
+            "timestamp_seconds": 54.28,
+            "text": "igual a um pinte ermolhado no inverno, minha saliva tá crocante...",
+            "frame_id": null,
+            "observation": "Uses exaggerated comedic descriptions and metaphors to rate the unusual beverage.",
+            "frame_timestamp_seconds": null,
+            "frame_delta_seconds": null
+          }
+        ]
+      },
+      {
+        "mechanism": "curiosity",
+        "confidence": 0.85,
+        "evidence": [
+          {
+            "type": "transcript",
+            "timestamp_seconds": 41.4,
+            "text": "O cheiro é um dos melhores possíveis e ao bebê é igual frango de padaria...",
+            "frame_id": null,
+            "observation": "Builds anticipation around how the unique coffee-chimarrão hybrid tastes.",
+            "frame_timestamp_seconds": null,
+            "frame_delta_seconds": null
+          }
+        ]
+      }
+    ],
+    "cta": {
+      "present": false,
+      "types": [],
+      "explicit_or_implicit": null,
+      "position": null,
+      "text": null,
+      "evidence": []
+    }
+  },
+  "provenance": {
+    "schema_version": "3.0",
+    "pipeline_version": "3.0.0",
+    "model_name": "gemini-3.5-flash-lite",
+    "prompt_version": "semantic_analysis_v3",
+    "analysis_timestamp": "2026-09-20T04:28:02.765628+00:00"
+  },
+  "author": "Braian Rizzo",
+  "caption": "Uma das maiores atrocidades que já passaram por esse canal, pelo menos pra mim que dessa vez sou o opressor e o oprimido ao mesmo tempo hahahaha\n\n#cafe #chimarrao #cafemarrao #chimafe #cuiastanley",
+  "public_metrics": {
+    "real_views": 323818,
+    "real_likes": 25164,
+    "real_comments": 510,
+    "real_shares": 0,
+    "real_reposts": 0,
+    "real_saves": 0,
+    "likes_hidden": false,
+    "like_to_view_ratio": 0.0777,
+    "comments_per_1k": 1.57,
+    "engagement_rate": 0.0793
+  },
+  "sample_comments": [],
+  "extraction_status": "OK (yt-dlp)"
+}
