@@ -102,4 +102,4 @@ pytest tests/ -v
 
 🔗 Upstream Engine
 Esta demonstração é impulsionada pelo pipeline de extração desenvolvido no motor principal:
-👉 TStryder/vie-video-intelligence-engine
+👉 [TStryder/vie-video-intelligence-engine](https://github.com/tstryder/vie-video-intelligence)
