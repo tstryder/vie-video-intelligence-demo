@@ -1,4 +1,4 @@
-# Video Intelligence Engine (VIE) — Demonstração Pública
+# Video Intelligence Engine (VIE) — Multimodal Video Analytics
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/)
 [![DuckDB](https://img.shields.io/badge/duckdb-1.0+-yellow.svg)](https://duckdb.org/)
@@ -7,9 +7,11 @@
 
 [English](README.md) | Português
 
-> Demonstração interativa do **Video Intelligence Engine (VIE)**: pipeline analítico multimodal que converte vídeos curtos em Creative Intelligence estruturada e consultável via SQL.
+> Demonstração pública da camada analítica do **Video Intelligence Engine (VIE)**, um sistema multimodal que transforma sinais de vídeo, áudio e análise semântica em dados estruturados e consultáveis.
 
-Este repositório fornece uma demonstração **100% autônoma e offline** da camada analítica, do schema dimensional e do dashboard interativo do VIE utilizando **DuckDB** e **Streamlit**.
+Este repositório demonstra a **camada analítica e de visualização** do VIE utilizando dados previamente processados pelo pipeline de extração.
+
+A demonstração é **100% autônoma e offline**: não requer chaves de API, inferência de LLM ou processamento de vídeo durante a execução.
 
 🔗 **[Acessar Demo Online](https://vie-video-intelligence-demo.streamlit.app/)** | 📦 **[Código do Motor Principal](https://github.com/TStryder/vie-video-intelligence-engine)**
 
@@ -17,75 +19,179 @@ Este repositório fornece uma demonstração **100% autônoma e offline** da cam
 
 ## Visão Geral da Arquitetura
 
+O pipeline completo do VIE separa extração, validação e análise. Este repositório público demonstra principalmente a camada final de análise.
+
 ```text
-               DATASET PÚBLICO DE VÍDEOS CURTOS (N=10)
-                                 │
-     ┌───────────────────────────┴───────────────────────────┐
-     ▼                                                       ▼
-data/features.parquet                               data/performance.parquet
-(55 colunas: Fatos físicos,                         (Snapshots temporais longitudinais:
- observações da IA, interpretações semânticas)       views, likes, comentários, engajamento)
-     │                                                       │
-     └───────────────────────────┬───────────────────────────┘
-                                 │
-                                 ▼
-                     MOTOR ANALÍTICO DUCKDB
-                   (src/analytics.py: views SQL,
-                    UNNEST multi-label, temporal joins)
-                                 │
-                                 ▼
-                   DASHBOARD INTERATIVO STREAMLIT
-                             (app.py)
-        ├── Aba 1: Panorama da Base & Métricas Descritivas
-        ├── Aba 2: Creative Inspector & Galeria de Keyframes
-        └── Aba 3: Insights de Performance & Séries Temporais
+                         VIE CORE ENGINE
+                              │
+                              ▼
+                  PROCESSAMENTO DE VÍDEO/ÁUDIO
+                              │
+                 ┌────────────┴────────────┐
+                 ▼                         ▼
+        SINAIS DETERMINÍSTICOS       ANÁLISE MULTIMODAL
+        FFprobe / PySceneDetect      Gemini / Whisper
+                 │                         │
+                 └────────────┬────────────┘
+                              ▼
+                    DADOS ESTRUTURADOS
+                     + EVIDÊNCIAS TEMPORAIS
+                              │
+                              ▼
+                    features.parquet
+                              │
+                              ▼
+                    ┌─────────────────┐
+                    │     DuckDB      │
+                    │ Camada Analítica│
+                    └────────┬────────┘
+                             │
+                             ▼
+                    DASHBOARD STREAMLIT
+                             │
+             ┌───────────────┼────────────────┐
+             ▼               ▼                ▼
+          Overview      Creative Inspector   Performance
 ```
+
+O **VIE Engine** realiza a extração e transformação dos dados. Este repositório contém um dataset já processado e demonstra como esses dados podem ser consultados, correlacionados e explorados sem executar novamente o pipeline de IA.
 
 ---
 
 ## Dataset e Escopo Técnico
 
-O dataset da demonstração é composto por **10 vídeos reais** processados integralmente pelo pipeline VIE V3:
-- **Fatos Físicos (`measurements`)**: Métricas determinísticas calculadas via Python (FFprobe, PySceneDetect, Whisper) — cortes por segundo, palavras por minuto, cadência de fala, duração.
-- **Observações Multimodais (`observations`)**: Elementos visuais (presença de webcam, tela dividida, legendas dinâmicas, detecção facial, produtos) e áudio.
-- **Interpretações Cognitivas (`interpretations`)**: Mecanismos de gancho primário, arcos narrativos, recursos retóricos e chamadas para ação com citação de evidências temporais.
-- **Keyframes**: Quadros JPEG extraídos nas transições de corte e amarrados aos nós de evidência.
-- **Performance Observada (`performance`)**: Snapshots públicos longitudinais de engajamento capturados via `yt-dlp`.
+O dataset da demonstração é composto por **10 vídeos reais** processados pelo pipeline VIE V3.
+
+### Fatos físicos (`measurements`)
+
+Métricas determinísticas calculadas a partir do conteúdo de vídeo e áudio utilizando ferramentas como:
+
+* FFprobe
+* PySceneDetect
+* Whisper
+* Python
+
+Exemplos:
+
+* duração do vídeo
+* cortes por segundo
+* palavras por minuto (WPM)
+* cadência de fala
+* duração de segmentos
+
+### Observações multimodais (`observations`)
+
+Características identificadas a partir da análise visual e de áudio, incluindo:
+
+* presença de webcam
+* tela dividida
+* legendas dinâmicas
+* detecção facial
+* presença de produtos
+* características de áudio
+
+### Interpretações semânticas (`interpretations`)
+
+Estruturas derivadas da análise multimodal, incluindo:
+
+* mecanismos de gancho
+* arcos narrativos
+* recursos retóricos
+* chamadas para ação
+* evidências temporais associadas às interpretações
+
+### Keyframes
+
+Quadros JPEG extraídos em pontos relevantes do vídeo e associados aos nós de evidência correspondentes.
+
+### Performance observada (`performance`)
+
+Snapshots longitudinais de métricas públicas de desempenho, incluindo:
+
+* views
+* likes
+* comentários
+* métricas derivadas de engajamento
+
+Os snapshots foram coletados a partir de dados públicos utilizando `yt-dlp`.
+
+---
+
+## Camada Analítica
+
+Os dados são armazenados em **Parquet** e consultados através do **DuckDB**.
+
+A camada analítica demonstra:
+
+* consultas SQL sobre dados estruturados;
+* normalização de campos multi-label com `UNNEST`;
+* cruzamento entre características criativas e performance;
+* joins temporais entre snapshots;
+* agregações e métricas descritivas;
+* exploração dos dados sem executar novamente o modelo de IA.
+
+Isso permite separar a etapa computacionalmente mais pesada de **extração/inferência** da etapa de **análise exploratória e consulta**.
 
 ---
 
 ## Aviso Metodológico
 
 > [!NOTE]
-> 1. **Amostra Observacional Demonstrativa**: O dataset fornecido é uma amostra não-probabilística restrita ($N = 10$) derivada de publicações públicas no YouTube Shorts. Destina-se exclusivamente a demonstrar viabilidade computacional, modelagem dimensional e consultas analíticas.
-> 2. **Ausência de Causalidade**: As correlações e padrões de desempenho exibidos refletem observações pontuais descritivas. O projeto não infere relações de causa e efeito sobre os algoritmos das plataformas.
-> 3. **Conteúdo de Terceiros**: Mídias originais completas (.mp4/.wav) não são redistribuídas. As marcas, títulos e identificadores dos criadores pertencem aos respectivos detentores de direitos.
+> **Amostra observacional demonstrativa:** o dataset é uma amostra não probabilística restrita ($N = 10$) derivada de publicações públicas no YouTube Shorts. Seu objetivo é demonstrar processamento, modelagem dimensional e análise de dados, não produzir conclusões estatísticas generalizáveis.
+>
+> **Ausência de causalidade:** as relações apresentadas no dashboard são observacionais e descritivas. O projeto não estabelece relações de causa e efeito entre características dos vídeos e desempenho nas plataformas.
+>
+> **Conteúdo de terceiros:** os arquivos de mídia originais (`.mp4`/`.wav`) não são redistribuídos neste repositório. Marcas, títulos, vídeos e identificadores de criadores pertencem aos respectivos detentores de direitos.
 
 ---
 
 ## Como Executar
 
-### 1. Clonar e Instalar Dependências
+### 1. Clonar o repositório
+
 ```bash
-git clone https://github.com/seu-usuario/vie-video-intelligence-demo.git
+git clone https://github.com/TStryder/vie-video-intelligence-demo.git
 cd vie-video-intelligence-demo
+```
 
+### 2. Criar o ambiente virtual
+
+```bash
 python -m venv .venv
-# No Windows:
-.venv\Scripts\activate
-# No Linux/macOS:
-source .venv/bin/activate
+```
 
+No Windows:
+
+```bash
+.venv\Scripts\activate
+```
+
+No Linux/macOS:
+
+```bash
+source .venv/bin/activate
+```
+
+### 3. Instalar dependências
+
+```bash
 pip install -r requirements.txt
 ```
 
-### 2. Iniciar o Dashboard Streamlit
+### 4. Iniciar o dashboard
+
 ```bash
 streamlit run app.py
 ```
-O dashboard será aberto em seu navegador no endereço `http://localhost:8501`.
 
-### 3. Executar os Testes Automatizados
+O dashboard estará disponível em:
+
+```text
+http://localhost:8501
+```
+
+### 5. Executar os testes
+
 ```bash
 pytest tests/ -v
 ```
@@ -94,12 +200,76 @@ pytest tests/ -v
 
 ## Estrutura das Abas do Dashboard
 
-- **Aba 1: 📊 Panorama da Base & Métricas**: Métricas médias (WPM, cortes/s, ratio de fala, volume de views) e tabela consolidada de fatos e performance.
-- **Aba 2: 🔍 Creative Inspector & Keyframes**: Inspeção detalhada de cada vídeo, exibindo ficha técnica, diagnósticos sensoriais, evidências citadas amarradas a timestamps e galeria visual dos keyframes.
-- **Aba 3: 📈 Performance & Insights Cruzados**: Análise multi-label de ganchos via SQL DuckDB, correlação de dinamismo nos primeiros 3 segundos e série temporal de snapshots.
+### 📊 Panorama da Base & Métricas
+
+Visão geral do dataset com métricas descritivas como:
+
+* WPM
+* cortes por segundo
+* proporção de fala
+* views
+* métricas de performance
+
+Também apresenta uma tabela consolidada combinando características dos vídeos e dados observados de performance.
+
+### 🔍 Creative Inspector & Keyframes
+
+Inspeção individual dos vídeos, incluindo:
+
+* ficha técnica;
+* características físicas;
+* observações multimodais;
+* interpretações semânticas;
+* evidências associadas a timestamps;
+* galeria de keyframes.
+
+### 📈 Performance & Insights Cruzados
+
+Exploração das relações entre características criativas e performance observada utilizando DuckDB.
+
+Inclui:
+
+* análise multi-label de mecanismos de gancho;
+* métricas de dinamismo nos primeiros segundos;
+* cruzamentos entre features e performance;
+* snapshots longitudinais;
+* séries temporais.
 
 ---
 
-🔗 Upstream Engine
-Esta demonstração é impulsionada pelo pipeline de extração desenvolvido no motor principal:
-👉 [TStryder/vie-video-intelligence-engine](https://github.com/tstryder/vie-video-intelligence)
+## Relação com o VIE Engine
+
+Este repositório **não contém o pipeline completo de ingestão e extração**.
+
+O fluxo é:
+
+```text
+VIE Engine
+    │
+    ├── Video / Audio Processing
+    ├── Deterministic Feature Extraction
+    ├── Multimodal LLM Analysis
+    ├── Structured Validation
+    └── Feature Dataset
+            │
+            ▼
+      VIE Demo
+            │
+            ├── DuckDB
+            ├── SQL Analytics
+            └── Streamlit Dashboard
+```
+
+O motor principal contém a implementação responsável pelo processamento e extração dos dados utilizados nesta demonstração.
+
+🔗 **[VIE Engine](https://github.com/TStryder/vie-video-intelligence-engine)**
+
+---
+
+## Demo Online
+
+A demonstração pode ser executada diretamente no Streamlit Community Cloud:
+
+🔗 **[vie-video-intelligence-demo.streamlit.app](https://vie-video-intelligence-demo.streamlit.app/)**
+
+O dashboard utiliza apenas os dados já presentes no repositório e não requer chamadas externas de API para funcionar.
