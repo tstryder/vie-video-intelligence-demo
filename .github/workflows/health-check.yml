@@ -1,4 +1,4 @@
-name: Streamlit Health Check
+name: Streamlit Keep Alive
 
 on:
   schedule:
@@ -6,13 +6,15 @@ on:
   workflow_dispatch:
 
 jobs:
-  health-check:
+  keep-alive:
     runs-on: ubuntu-latest
     steps:
-      - name: Check Streamlit app health
+      - name: Visit Streamlit app
         run: |
           curl --fail --silent --show-error \
+            --location \
             --retry 3 \
             --retry-delay 10 \
             --max-time 60 \
-            https://vie-video-intelligence-demo.streamlit.app/_stcore/health
+            -A "Mozilla/5.0" \
+            https://vie-video-intelligence-demo.streamlit.app/
