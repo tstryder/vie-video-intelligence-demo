@@ -1,4 +1,4 @@
-# Video Intelligence Engine (VIE) - Public Demonstration
+# Video Intelligence Engine (VIE) - Multimodal Video Analytics
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/)
 [![DuckDB](https://img.shields.io/badge/duckdb-1.0+-yellow.svg)](https://duckdb.org/)
