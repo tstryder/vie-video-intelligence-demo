@@ -4,6 +4,9 @@ on:
   schedule:
     - cron: "*/30 * * * *"
   workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/health-check.yml"
 
 jobs:
   keep-alive:
@@ -28,6 +31,7 @@ jobs:
           GITHUB_EVENT_NAME: ${{ github.event_name }}
         run: |
           python - <<'PY'
+          import json
           import os
           import sys
           import time
@@ -83,6 +87,56 @@ jobs:
                       f"{type(exc).__name__}: {exc}"
                   )
 
+          def dump_browser_diagnostics(driver):
+              if driver is None:
+                  return
+              try:
+                  entries = driver.get_log("browser")
+                  print(f"BROWSER_CONSOLE_ENTRY_COUNT: {len(entries)}")
+                  for entry in entries[-150:]:
+                      print("BROWSER_CONSOLE: " + json.dumps(entry, ensure_ascii=False))
+              except Exception as exc:
+                  print(f"BROWSER_LOG_UNAVAILABLE: {type(exc).__name__}: {exc}")
+              try:
+                  entries = driver.get_log("performance")
+                  events = []
+                  for entry in entries:
+                      try:
+                          message = json.loads(entry["message"])["message"]
+                          method = message.get("method", "")
+                          params = message.get("params", {})
+                          if method == "Network.responseReceived":
+                              response = params.get("response", {})
+                              status = int(response.get("status", 0))
+                              mime = response.get("mimeType", "")
+                              request_id = params.get("requestId", "")
+                              if status >= 400 or "websocket" in mime.lower():
+                                  events.append({
+                                      "event": method, "status": status, "mime": mime,
+                                      "url": response.get("url", ""), "requestId": request_id
+                                  })
+                          elif method == "Network.loadingFailed":
+                              events.append({
+                                  "event": method, "requestId": params.get("requestId"),
+                                  "errorText": params.get("errorText"),
+                                  "blockedReason": params.get("blockedReason"),
+                                  "canceled": params.get("canceled")
+                              })
+                          elif method == "Network.webSocketCreated":
+                              events.append({
+                                  "event": method, "requestId": params.get("requestId"),
+                                  "url": params.get("url")
+                              })
+                          elif method == "Network.webSocketFrameError":
+                              events.append({"event": method, "params": params})
+                      except Exception:
+                          continue
+                  print(f"NETWORK_DIAGNOSTIC_EVENT_COUNT: {len(events)}")
+                  for event in events[-200:]:
+                      print("NETWORK_DIAGNOSTIC: " + json.dumps(event, ensure_ascii=False))
+              except Exception as exc:
+                  print(f"PERFORMANCE_LOG_UNAVAILABLE: {type(exc).__name__}: {exc}")
+
           def page_state(driver):
               text = body_text(driver).casefold()
               markers = [marker for marker in REQUIRED_MARKERS if marker in text]
@@ -96,6 +150,14 @@ jobs:
           options.add_argument("--disable-dev-shm-usage")
           options.add_argument("--disable-gpu")
           options.add_argument("--window-size=1440,1000")
+          options.set_capability("goog:loggingPrefs", {
+              "browser": "ALL",
+              "performance": "ALL",
+          })
+          options.add_experimental_option("perfLoggingPrefs", {
+              "enableNetwork": True,
+              "enablePage": True,
+          })
 
           driver = None
 
@@ -112,6 +174,8 @@ jobs:
               wake_clicks = 0
               last_state = None
               app_ready = False
+              next_snapshot = time.monotonic() + 30
+              snapshot_number = 1
 
               while time.monotonic() < deadline:
                   # A sleeping Community Cloud app exposes this explicit button.
@@ -157,6 +221,11 @@ jobs:
                       app_ready = True
                       break
 
+                  if diagnostic_mode and time.monotonic() >= next_snapshot:
+                      save_diagnostics(driver, f"progress-{snapshot_number:02d}")
+                      snapshot_number += 1
+                      next_snapshot = time.monotonic() + 30
+
                   time.sleep(POLL_INTERVAL_SECONDS)
 
               if not app_ready:
@@ -172,9 +241,11 @@ jobs:
                   print(f"Sleep markers found: {sleep_markers}", file=sys.stderr)
                   print(f"Final body text (first 6000 chars): {text[:6000]}", file=sys.stderr)
                   save_diagnostics(driver, "timeout-page")
+                  dump_browser_diagnostics(driver)
                   sys.exit(1)
 
               print("READINESS_CHECK_PASSED: VIE dashboard markers are visible.")
+              dump_browser_diagnostics(driver)
               print(f"Wake button clicks: {wake_clicks}")
               print(f"Final URL: {driver.current_url}")
               print(f"Page title: {driver.title}")
