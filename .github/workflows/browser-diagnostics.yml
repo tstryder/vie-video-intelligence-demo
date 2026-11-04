@@ -156,7 +156,6 @@ jobs:
                   from seleniumbase import sb_cdp
                   browser = sb_cdp.Chrome(headless=True)
                   try:
-                      browser.set_window_size(1440, 1000)
                       browser.goto(URL)
                       deadline = time.monotonic() + 150
                       html = ""
@@ -209,7 +208,7 @@ jobs:
                       result["final_url"] = page.url
                       result["http_errors"] = responses[-150:]
                       result["websocket_events"] = sockets[-100:]
-                      save("result", page.content(), page.screenshot)
+                      save("result", page.content(), lambda path: page.screenshot(path=path))
               else:
                   raise ValueError(f"Unknown browser variant: {VARIANT}")
 
