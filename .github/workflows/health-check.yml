@@ -43,7 +43,7 @@ jobs:
           from selenium.webdriver.common.by import By
 
           url = os.environ["STREAMLIT_URL"]
-          diagnostic_mode = os.environ.get("GITHUB_EVENT_NAME") == "workflow_dispatch"
+          diagnostic_mode = os.environ.get("GITHUB_EVENT_NAME") != "schedule"
           diagnostic_dir = Path("streamlit-diagnostics")
 
           # These are distinctive strings from the actual VIE dashboard.
@@ -265,7 +265,7 @@ jobs:
           PY
 
       - name: Upload diagnostic evidence
-        if: always() && github.event_name == 'workflow_dispatch'
+        if: always() && github.event_name != 'schedule'
         uses: actions/upload-artifact@v4
         with:
           name: streamlit-keep-alive-diagnostics
