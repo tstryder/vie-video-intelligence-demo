@@ -62,10 +62,24 @@ jobs:
           MAX_WAIT_SECONDS = 240
           POLL_INTERVAL_SECONDS = 3
 
+          def switch_to_app_frame(driver):
+              """The Community Cloud landing page embeds the actual app in an iframe."""
+              driver.switch_to.default_content()
+              frames = driver.find_elements(
+                  By.CSS_SELECTOR, "iframe[title='streamlitApp']"
+              )
+              if frames:
+                  driver.switch_to.frame(frames[0])
+                  return True
+              return False
+
           def body_text(driver):
               try:
+                  found = switch_to_app_frame(driver)
+                  print(f"APP_FRAME_FOUND: {found}")
                   return driver.find_element(By.TAG_NAME, "body").text
-              except Exception:
+              except Exception as exc:
+                  print(f"BODY_TEXT_READ_FAILED: {type(exc).__name__}: {exc}")
                   return ""
 
           def save_diagnostics(driver, label):
@@ -183,6 +197,7 @@ jobs:
                   # Re-check during polling in case the sleep page appears after
                   # the initial document load.
                   try:
+                      switch_to_app_frame(driver)
                       buttons = driver.find_elements(
                           By.XPATH,
                           "//button[contains(., 'Yes, get this app back up!')]",
