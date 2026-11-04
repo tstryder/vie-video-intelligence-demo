@@ -1,0 +1,236 @@
+name: Streamlit Browser Diagnostics
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/browser-diagnostics.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  browser-test:
+    name: "Browser test (${{ matrix.browser }})"
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: [selenium, seleniumbase-cdp, camoufox]
+
+    env:
+      STREAMLIT_URL: https://vie-video-intelligence-demo.streamlit.app/
+      BROWSER_VARIANT: ${{ matrix.browser }}
+
+    steps:
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Set up Chrome
+        if: matrix.browser != 'camoufox'
+        uses: browser-actions/setup-chrome@v2
+
+      - name: Install test browser
+        shell: bash
+        run: |
+          python -m pip install --upgrade pip
+          if [ "$BROWSER_VARIANT" = "selenium" ]; then
+            pip install selenium
+          elif [ "$BROWSER_VARIANT" = "seleniumbase-cdp" ]; then
+            pip install seleniumbase
+          elif [ "$BROWSER_VARIANT" = "camoufox" ]; then
+            pip install camoufox
+            python -m camoufox fetch
+          fi
+
+      - name: Run browser diagnostics
+        shell: bash
+        run: |
+          mkdir -p browser-diagnostics
+          python - <<'PY'
+          import json, os, re, sys, time, traceback
+          from pathlib import Path
+
+          URL = os.environ["STREAMLIT_URL"]
+          VARIANT = os.environ["BROWSER_VARIANT"]
+          OUT = Path("browser-diagnostics")
+          REQUIRED = [
+              "video intelligence engine (vie)",
+              "creative inspector",
+              "atualizar visualizações",
+          ]
+          CHALLENGE_TERMS = [
+              "captcha", "verify you are human", "checking your browser",
+              "unusual traffic", "access denied", "robot or human",
+              "security challenge", "cloudflare ray id",
+          ]
+
+          result = {
+              "variant": VARIANT,
+              "url": URL,
+              "status": "unknown",
+              "title": "",
+              "final_url": "",
+              "dashboard_markers": [],
+              "challenge_markers": [],
+              "http_errors": [],
+              "websocket_events": [],
+              "console_errors": [],
+              "notes": [],
+          }
+
+          def classify(text):
+              lower = text.lower()
+              result["dashboard_markers"] = [m for m in REQUIRED if m in lower]
+              result["challenge_markers"] = [m for m in CHALLENGE_TERMS if m in lower]
+              if len(result["dashboard_markers"]) == len(REQUIRED):
+                  result["status"] = "dashboard_ready"
+              elif result["challenge_markers"]:
+                  result["status"] = "possible_antibot_or_captcha"
+              else:
+                  result["status"] = "loading_or_backend_failure"
+
+          def save(name, html, screenshot_fn=None):
+              (OUT / f"{name}.html").write_text(html or "", encoding="utf-8")
+              if screenshot_fn:
+                  try:
+                      screenshot_fn(str(OUT / f"{name}.png"))
+                  except Exception as e:
+                      result["notes"].append(f"screenshot failed: {type(e).__name__}: {e}")
+
+          try:
+              if VARIANT == "selenium":
+                  from selenium import webdriver
+                  from selenium.webdriver.chrome.options import Options
+                  from selenium.webdriver.common.by import By
+
+                  opts = Options()
+                  opts.add_argument("--headless=new")
+                  opts.add_argument("--no-sandbox")
+                  opts.add_argument("--disable-dev-shm-usage")
+                  opts.add_argument("--window-size=1440,1000")
+                  opts.set_capability("goog:loggingPrefs", {"browser": "ALL", "performance": "ALL"})
+                  opts.add_experimental_option("perfLoggingPrefs", {"enableNetwork": True, "enablePage": True})
+                  driver = webdriver.Chrome(options=opts)
+                  try:
+                      driver.set_page_load_timeout(90)
+                      driver.get(URL)
+                      deadline = time.monotonic() + 150
+                      text = ""
+                      while time.monotonic() < deadline:
+                          text = driver.find_element(By.TAG_NAME, "body").text
+                          classify(text)
+                          if result["status"] in ("dashboard_ready", "possible_antibot_or_captcha"):
+                              break
+                          time.sleep(3)
+                      result["title"] = driver.title
+                      result["final_url"] = driver.current_url
+                      save("result", driver.page_source, driver.save_screenshot)
+                      try:
+                          result["console_errors"] = [
+                              x for x in driver.get_log("browser")
+                              if x.get("level") in ("SEVERE", "ERROR")
+                          ][-100:]
+                      except Exception as e:
+                          result["notes"].append(f"browser logs unavailable: {e}")
+                      try:
+                          for entry in driver.get_log("performance"):
+                              msg = json.loads(entry["message"])["message"]
+                              method, params = msg.get("method"), msg.get("params", {})
+                              if method == "Network.responseReceived":
+                                  resp = params.get("response", {})
+                                  status = int(resp.get("status", 0))
+                                  if status >= 400:
+                                      result["http_errors"].append({"status": status, "url": resp.get("url", "")})
+                              elif method in ("Network.webSocketCreated", "Network.webSocketFrameError"):
+                                  result["websocket_events"].append({"event": method, "params": params})
+                      except Exception as e:
+                          result["notes"].append(f"performance logs unavailable: {e}")
+                  finally:
+                      driver.quit()
+
+              elif VARIANT == "seleniumbase-cdp":
+                  from seleniumbase import sb_cdp
+                  browser = sb_cdp.Chrome(headless=True)
+                  try:
+                      browser.set_window_size(1440, 1000)
+                      browser.goto(URL)
+                      deadline = time.monotonic() + 150
+                      html = ""
+                      text = ""
+                      while time.monotonic() < deadline:
+                          try:
+                              html = browser.get_page_source()
+                              text = browser.get_text("body")
+                          except Exception:
+                              try:
+                                  html = browser.get_page_source()
+                                  text = re.sub("<[^>]+>", " ", html)
+                              except Exception:
+                                  pass
+                          classify(text + " " + html)
+                          if result["status"] in ("dashboard_ready", "possible_antibot_or_captcha"):
+                              break
+                          time.sleep(3)
+                      result["title"] = browser.get_title()
+                      result["final_url"] = browser.get_current_url()
+                      save("result", html)
+                      try:
+                          browser.save_screenshot(str(OUT / "result.png"))
+                      except Exception as e:
+                          result["notes"].append(f"screenshot failed: {e}")
+                  finally:
+                      browser.quit()
+
+              elif VARIANT == "camoufox":
+                  from camoufox.sync_api import Camoufox
+                  with Camoufox(headless=True) as browser:
+                      page = browser.new_page(viewport={"width": 1440, "height": 1000})
+                      responses = []
+                      sockets = []
+                      page.on("response", lambda r: responses.append({"status": r.status, "url": r.url}) if r.status >= 400 else None)
+                      page.on("websocket", lambda ws: sockets.append({"event": "created", "url": ws.url}))
+                      page.goto(URL, wait_until="domcontentloaded", timeout=90000)
+                      deadline = time.monotonic() + 150
+                      text = ""
+                      while time.monotonic() < deadline:
+                          try:
+                              text = page.locator("body").inner_text(timeout=5000)
+                          except Exception:
+                              text = ""
+                          classify(text)
+                          if result["status"] in ("dashboard_ready", "possible_antibot_or_captcha"):
+                              break
+                          page.wait_for_timeout(3000)
+                      result["title"] = page.title()
+                      result["final_url"] = page.url
+                      result["http_errors"] = responses[-150:]
+                      result["websocket_events"] = sockets[-100:]
+                      save("result", page.content(), page.screenshot)
+              else:
+                  raise ValueError(f"Unknown browser variant: {VARIANT}")
+
+          except Exception as e:
+              result["status"] = "test_harness_error"
+              result["notes"].append(f"{type(e).__name__}: {e}")
+              result["notes"].append(traceback.format_exc()[-5000:])
+
+          (OUT / "result.json").write_text(json.dumps(result, indent=2, ensure_ascii=False), encoding="utf-8")
+          print(json.dumps(result, indent=2, ensure_ascii=False))
+
+          # Challenges are recorded as findings, not automatically solved or bypassed.
+          if result["status"] != "dashboard_ready":
+              sys.exit(1)
+          PY
+
+      - name: Upload diagnostic evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: browser-diagnostics-${{ matrix.browser }}
+          path: browser-diagnostics/
+          if-no-files-found: warn
+          retention-days: 7
