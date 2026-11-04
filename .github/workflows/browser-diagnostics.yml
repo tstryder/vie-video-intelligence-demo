@@ -17,7 +17,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        browser: [selenium, seleniumbase-cdp, camoufox]
+        browser: [selenium, camoufox]
 
     env:
       STREAMLIT_URL: https://vie-video-intelligence-demo.streamlit.app/
@@ -121,6 +121,10 @@ jobs:
                       deadline = time.monotonic() + 150
                       text = ""
                       while time.monotonic() < deadline:
+                          driver.switch_to.default_content()
+                          frames = driver.find_elements(By.CSS_SELECTOR, "iframe[title='streamlitApp']")
+                          if frames:
+                              driver.switch_to.frame(frames[0])
                           text = driver.find_element(By.TAG_NAME, "body").text
                           classify(text)
                           if result["status"] in ("dashboard_ready", "possible_antibot_or_captcha"):
@@ -128,7 +132,8 @@ jobs:
                           time.sleep(3)
                       result["title"] = driver.title
                       result["final_url"] = driver.current_url
-                      save("result", driver.page_source, driver.save_screenshot)
+                      html = driver.page_source
+                      save("result", html, driver.save_screenshot)
                       try:
                           result["console_errors"] = [
                               x for x in driver.get_log("browser")
@@ -152,38 +157,6 @@ jobs:
                   finally:
                       driver.quit()
 
-              elif VARIANT == "seleniumbase-cdp":
-                  from seleniumbase import sb_cdp
-                  browser = sb_cdp.Chrome(headless=True)
-                  try:
-                      browser.goto(URL)
-                      deadline = time.monotonic() + 150
-                      html = ""
-                      text = ""
-                      while time.monotonic() < deadline:
-                          try:
-                              html = browser.get_page_source()
-                              text = browser.get_text("body")
-                          except Exception:
-                              try:
-                                  html = browser.get_page_source()
-                                  text = re.sub("<[^>]+>", " ", html)
-                              except Exception:
-                                  pass
-                          classify(text + " " + html)
-                          if result["status"] in ("dashboard_ready", "possible_antibot_or_captcha"):
-                              break
-                          time.sleep(3)
-                      result["title"] = browser.get_title()
-                      result["final_url"] = browser.get_current_url()
-                      save("result", html)
-                      try:
-                          browser.save_screenshot(str(OUT / "result.png"))
-                      except Exception as e:
-                          result["notes"].append(f"screenshot failed: {e}")
-                  finally:
-                      browser.quit()
-
               elif VARIANT == "camoufox":
                   from camoufox.sync_api import Camoufox
                   with Camoufox(headless=True) as browser:
@@ -195,9 +168,14 @@ jobs:
                       page.goto(URL, wait_until="domcontentloaded", timeout=90000)
                       deadline = time.monotonic() + 150
                       text = ""
+                      app_frame = None
                       while time.monotonic() < deadline:
+                          app_frame = next((f for f in page.frames if "streamlitApp" in (f.name or "") or "/~/" in f.url), None)
                           try:
-                              text = page.locator("body").inner_text(timeout=5000)
+                              if app_frame is not None:
+                                  text = app_frame.locator("body").inner_text(timeout=5000)
+                              else:
+                                  text = page.locator("body").inner_text(timeout=5000)
                           except Exception:
                               text = ""
                           classify(text)
@@ -208,7 +186,8 @@ jobs:
                       result["final_url"] = page.url
                       result["http_errors"] = responses[-150:]
                       result["websocket_events"] = sockets[-100:]
-                      save("result", page.content(), lambda path: page.screenshot(path=path))
+                      html = app_frame.content() if app_frame is not None else page.content()
+                      save("result", html, lambda path: page.screenshot(path=path))
               else:
                   raise ValueError(f"Unknown browser variant: {VARIANT}")
 
