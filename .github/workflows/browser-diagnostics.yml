@@ -80,16 +80,26 @@ jobs:
               "websocket_events": [],
               "console_errors": [],
               "notes": [],
+              "sleep_markers": [],
+              "wake_button_clicks": 0,
           }
+          SLEEP_TERMS = [
+              "this app has gone to sleep",
+              "get this app back up",
+              "yes, get this app back up!",
+          ]
 
           def classify(text):
               lower = text.lower()
               result["dashboard_markers"] = [m for m in REQUIRED if m in lower]
               result["challenge_markers"] = [m for m in CHALLENGE_TERMS if m in lower]
+              result["sleep_markers"] = [m for m in SLEEP_TERMS if m in lower]
               if len(result["dashboard_markers"]) == len(REQUIRED):
                   result["status"] = "dashboard_ready"
               elif result["challenge_markers"]:
                   result["status"] = "possible_antibot_or_captcha"
+              elif result["sleep_markers"]:
+                  result["status"] = "sleep_page"
               else:
                   result["status"] = "loading_or_backend_failure"
 
@@ -127,6 +137,20 @@ jobs:
                               driver.switch_to.frame(frames[0])
                           text = driver.find_element(By.TAG_NAME, "body").text
                           classify(text)
+                          if result["status"] == "sleep_page":
+                              buttons = driver.find_elements(
+                                  By.XPATH,
+                                  "//button[contains(., 'Yes, get this app back up!')]",
+                              )
+                              clickable = next(
+                                  (b for b in buttons if b.is_displayed() and b.is_enabled()),
+                                  None,
+                              )
+                              if clickable is not None:
+                                  clickable.click()
+                                  result["wake_button_clicks"] += 1
+                                  time.sleep(2)
+                                  continue
                           if result["status"] in ("dashboard_ready", "possible_antibot_or_captcha"):
                               break
                           time.sleep(3)
@@ -179,6 +203,15 @@ jobs:
                           except Exception:
                               text = ""
                           classify(text)
+                          if result["status"] == "sleep_page" and app_frame is not None:
+                              wake_button = app_frame.get_by_role(
+                                  "button", name=re.compile("Yes, get this app back up", re.I)
+                              )
+                              if wake_button.count() and wake_button.first.is_visible() and wake_button.first.is_enabled():
+                                  wake_button.first.click()
+                                  result["wake_button_clicks"] += 1
+                                  page.wait_for_timeout(2000)
+                                  continue
                           if result["status"] in ("dashboard_ready", "possible_antibot_or_captcha"):
                               break
                           page.wait_for_timeout(3000)
